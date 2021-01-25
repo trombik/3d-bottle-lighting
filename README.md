@@ -14,7 +14,7 @@ A 3D model for bottle lighting.
 To export the object(s) to STL file:
 
 ```console
-PYTHONPATH=/usr/local/FreeCAD/lib python3 export-stl.FCMacro ${FILENAME_WITHOUT_EXTENSION.stl
+PYTHONPATH=/usr/local/FreeCAD/lib python3 export-stl.FCMacro ${FILENAME_WITHOUT_EXTENSION}.stl
 ```
 
 where `PYTHONPATH` should be path to FreeCAD python library directory, and
