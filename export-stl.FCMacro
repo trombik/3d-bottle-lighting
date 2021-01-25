@@ -1,0 +1,11 @@
+# -*- coding: utf-8 -*-
+
+import FreeCAD
+import Mesh
+
+FreeCAD.open(u"src/base.FCStd")
+__objs__=[]
+__objs__.append(FreeCAD.getDocument("base").getObject("Body"))
+Mesh.export(__objs__,u"bottle-lighting-base.stl")
+
+del __objs__
