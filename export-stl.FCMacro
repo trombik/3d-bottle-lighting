@@ -1,11 +1,30 @@
 # -*- coding: utf-8 -*-
 
+import sys
+import re
+import os
 import FreeCAD
 import Mesh
 
-FreeCAD.open(u"src/base.FCStd")
+# foo-bar.stl
+target_filename = sys.argv[1]
+# foo-bar
+target_filename_without_ext = '.'.join(target_filename.split('.')[0:-1])
+# foo-bar.FCStd
+src_filename = '.'.join([target_filename_without_ext, 'FCStd'])
+# src/foo-bar.FCStd
+src_file = os.path.join('src', src_filename)
+# foo_bar
+freecad_document_name = target_filename_without_ext.replace("-", "_")
+
+# requirements:
+# - one document in a file
+# - the document name must be same as the filename
+# - the body to export must be named "Body"
+
+FreeCAD.open(src_file)
 __objs__=[]
-__objs__.append(FreeCAD.getDocument("base").getObject("Body"))
-Mesh.export(__objs__,u"bottle-lighting-base.stl")
+__objs__.append(FreeCAD.getDocument(freecad_document_name).getObject("Body"))
+Mesh.export(__objs__, target_filename)
 
 del __objs__

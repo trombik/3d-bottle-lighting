@@ -4,8 +4,8 @@ PYTHON=?	python3
 WRKSRC=	src
 TARGETS=    bottle-lighting-base.stl
 
-bottle-lighting-base.stl:	${WRKSRC}/base.FCStd
-	PYTHONPATH="${PYTHONPATH}" python3 export-stl.FCMacro
+${TARGETS}:	${WRKSRC}/${.TARGET:S/.stl//}.FCStd
+	PYTHONPATH="${PYTHONPATH}" python3 export-stl.FCMacro ${.TARGET}
 
 all: ${TARGETS}
 
