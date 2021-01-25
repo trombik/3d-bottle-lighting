@@ -1,2 +1,3 @@
 *.core
 *.stl
+src/*.FCStd[0-9]
