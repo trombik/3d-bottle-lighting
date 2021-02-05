@@ -29,7 +29,7 @@ jobs:
           for D in Mod Ext Gui; do
             (cd /usr/lib/freecad-python3 && sudo ln -s /usr/share/freecad/${D} ${D})
           done
-          fmake PYTHONPATH=/usr/lib/freecad/lib 2>&1 | tee build.log
+          fmake PYTHONPATH=/usr/lib/freecad/lib 2>&1 PYTHON=/usr/bin/python | tee build.log
 
           # XXX FreeCAD exits with zero even when failed to load modules
           if grep -i error build.log; then
